@@ -3,21 +3,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
-            }
-        }
-
-        stage ('Build') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-        stage ('DockerBuild') {
-            steps {
-                sh 'docker build .'
+                sh 'git checkout master'
             }
         }
     }
