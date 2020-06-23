@@ -16,12 +16,12 @@ pipeline {
                 sh 'git checkout master'
             }
         }
-        stage ('Checkout') {
+        stage ('install') {
             steps {
                 sh 'npm install'
             }
         }
-        stage ('Checkout') {
+        stage ('build') {
             steps {
                 sh 'ng build'
             }
