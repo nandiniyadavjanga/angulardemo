@@ -13,19 +13,11 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Test and Build') {
-      parallel {
-        stage('Run Tests') {
-          steps {
-            sh 'npm run test'
-          }
+     stage ('Build') {
+            steps {
+                sh 'ng build'
+            }
         }
-        stage('Create Build Artifacts') {
-          steps {
-            sh 'npm run build'
-          }
-        }
-      }
-    }
+   
     }
 }
