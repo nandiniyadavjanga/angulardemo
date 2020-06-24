@@ -13,11 +13,11 @@ pipeline{
                       docker { image 'node:10' }
                   }
                   steps {
-                         echo Installing packages
-                         npm install
-                         npm install @angular/cli@^8.3.15
-                         echo Building Angular Project
-                         ng build
+                    sh ```echo Installing packages
+                          npm install
+                          npm install @angular/cli@^8.3.15
+                          echo Building Angular Project
+                          ng build```
                   }
              }
               stage("S3 Build") {
