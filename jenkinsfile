@@ -28,6 +28,8 @@ pipeline{
                          aws s3api creat-bucket --bucket angular-demo-bucket --region us-east-1
                   }
               }
+           }   
        }
    }
 }
+
