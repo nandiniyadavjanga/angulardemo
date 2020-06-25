@@ -22,18 +22,20 @@ pipeline{
                          '''
                   }
              }
-              /* stage("S3 Build") {
+              stage("S3 Build") {
                   steps {
                          //aws cloudformation create-stack --stack-name S3bucketcreation --template-body file:cft.yaml
-                         aws s3api creat-bucket --bucket angular-demo-bucket --region us-east-1
+                         aws s3api creat-bucket --bucket angular-demo-bucket --region us-east-2
                   }
               }
        }
    }
-    stage ('Deploy'){
+    stage ('push'){
       steps{
-        aws s3 cp dist/ s3://AngularS3Bucket/ --recursive --region us-east-1
-      } */
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'angular_push', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        sh 'aws s3 ls'
+        sh 'aws s3 sync . s3://angular-demo-bucket/ --region us-east-2'
+      } 
        }
    }
     
