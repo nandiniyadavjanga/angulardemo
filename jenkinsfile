@@ -28,6 +28,7 @@ pipeline{
 
                          //aws cloudformation create-stack --stack-name S3bucketcreation --template-body file:cft.yaml
                          sh 'aws s3api create-bucket --bucket my-bucket --region us-east-1'
+                        }
                   }
               }
        }
