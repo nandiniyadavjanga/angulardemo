@@ -27,7 +27,7 @@ pipeline{
                          withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'angular_push', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
                          //aws cloudformation create-stack --stack-name S3bucketcreation --template-body file:cft.yaml
-                         sh 'aws s3api create-bucket --bucket my-bucket --region us-east-1'
+                         sh 'aws s3api create-bucket --bucket jangatelugubucket --region us-east-1'
                         }
                   }
               }
@@ -37,7 +37,7 @@ pipeline{
       steps{
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'angular_push', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
         sh 'aws s3 ls'
-        sh 'aws s3 sync . s3://my-bucket/ --region us-east-1'
+        sh 'aws s3 sync . s3://jangatelugubucket/ --region us-east-1'
       } 
        }
    }
